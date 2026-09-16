@@ -1,4 +1,4 @@
-# 🎬 Movie App — React Native & Expo Router
+# 🎬 Movie Mobile — React Native & Expo Router
 
 ![Expo](https://img.shields.io/badge/Expo-v51.0-000000?style=for-the-badge\&logo=expo\&logoColor=white)
 ![React Native](https://img.shields.io/badge/React_Native-0.74+-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)
