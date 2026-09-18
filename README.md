@@ -196,5 +196,3 @@ O projeto pode ser executado em:
 
 **Tiago Antunes**
 
-Projeto desenvolvido para estudos e prática de desenvolvimento mobile utilizando **React Native**, **Expo Router**, **TypeScript** e **NativeWind**.
-
