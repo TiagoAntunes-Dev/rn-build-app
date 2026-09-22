@@ -192,7 +192,3 @@ O projeto pode ser executado em:
 
 ---
 
-## 👨‍💻 Desenvolvedor
-
-**Tiago Antunes**
-
