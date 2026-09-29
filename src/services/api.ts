@@ -1,13 +1,27 @@
-const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
-const options = {
-  method: 'GET',
+export const TMDB_CONFIG = {
+  BASE_URL: 'https://api.themoviedb.org/3',
+  API_KEYS: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYTI2ZDU2NDExNzFiYjg5OWE5MDVkZTJkNzY3NGE1OCIsIm5iZiI6MTc5MDE5NzcyOS44MDE5OTk4LCJzdWIiOiI2YWI0M2ZlMWNhOTEyNmU2Y2RhOTIyYmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.G6OPAz5vgtJ4t-B2Zu68eJvy0H5kgYBV75gX5b56O88'
+    Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`
   }
-};
+}
 
-fetch(url, options)
-  .then(res => res.json())
-  .then(json => console.log(json))
-  .catch(err => console.error(err));
+export const fetchMovies = async ({query} : { query : string }) => {
+  const endpoint = query 
+    ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+    : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`
+
+  const response = await fetch(endpoint, {
+    method: 'GET',
+    headers: TMDB_CONFIG.headers,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Falha para carregar filmes: ${response.status} ${response.statusText}`);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+}
