@@ -21,6 +21,7 @@ interface TrendingMovie {
   title: string;
   count: number;
   poster_url: string;
+  vote_average: number;
 }
 
 interface MovieDetails {
