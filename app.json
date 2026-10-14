@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "rn-build-app",
-    "slug": "cine-log",
+    "slug": "cinelog",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/logo.png",
@@ -13,9 +13,7 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./src/assets/images/logo.png",
-        // "backgroundImage": "./src/assets/images/android-icon-background.png",
-        // "monochromeImage": "./src/assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./src/assets/images/logo.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.anonymous.myapp"
@@ -39,6 +37,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c698f60f-019f-4e3f-a5f4-f07208cc10b4"
+      }
+    },
+    "owner": "tiagoantunes-devs-team"
   }
 }
