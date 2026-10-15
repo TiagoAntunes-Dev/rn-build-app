@@ -8,16 +8,20 @@ type Movie = {
   vote_average?: number;
 };
 
-const REQUIRED_ENV_VARS = [
-  "EXPO_PUBLIC_APPWRITE_ENDPOINT",
-  "EXPO_PUBLIC_APPWRITE_PROJECT_ID",
-  "EXPO_PUBLIC_APPWRITE_DATABASE_ID",
-  "EXPO_PUBLIC_APPWRITE_COLLECTION_ID",
-] as const;
+// Cada variável é lida por extenso para o Expo embutir o valor no build.
+const ENDPOINT = process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT;
+const PROJECT_ID = process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID;
+const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID;
+const COLLECTION_ID = process.env.EXPO_PUBLIC_APPWRITE_COLLECTION_ID;
 
-const missingEnvVars = REQUIRED_ENV_VARS.filter(
-  (key) => !process.env[key] || process.env[key]?.trim() === "",
-);
+const missingEnvVars = Object.entries({
+  EXPO_PUBLIC_APPWRITE_ENDPOINT: ENDPOINT,
+  EXPO_PUBLIC_APPWRITE_PROJECT_ID: PROJECT_ID,
+  EXPO_PUBLIC_APPWRITE_DATABASE_ID: DATABASE_ID,
+  EXPO_PUBLIC_APPWRITE_COLLECTION_ID: COLLECTION_ID,
+})
+  .filter(([, value]) => !value?.trim())
+  .map(([key]) => key);
 
 if (missingEnvVars.length > 0) {
   throw new Error(
@@ -25,12 +29,9 @@ if (missingEnvVars.length > 0) {
   );
 }
 
-const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!;
-const COLLECTION_ID = process.env.EXPO_PUBLIC_APPWRITE_COLLECTION_ID!;
-
 export const client = new Client()
-  .setEndpoint(process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!)
-  .setProject(process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!);
+  .setEndpoint(ENDPOINT!)
+  .setProject(PROJECT_ID!);
 
 const databases = new Databases(client);
 
@@ -71,15 +72,15 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
   }
 
   try {
-    const result = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
+    const result = await databases.listDocuments(DATABASE_ID!, COLLECTION_ID!, [
       Query.equal("searchTerm", searchTerm),
     ]);
 
     if (result.documents.length > 0) {
       const existingMovie = result.documents[0];
       await databases.updateDocument(
-        DATABASE_ID,
-        COLLECTION_ID,
+        DATABASE_ID!,
+        COLLECTION_ID!,
         existingMovie.$id,
         {
           count: Number(existingMovie.count ?? 0) + 1,
@@ -91,7 +92,7 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
         },
       );
     } else {
-      await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), {
+      await databases.createDocument(DATABASE_ID!, COLLECTION_ID!, ID.unique(), {
         searchTerm,
         movie_id: movie.id,
         poster_url: movie.poster_path
@@ -111,7 +112,7 @@ export const getTrendingMovies = async (): Promise<
   TrendingMovie[] | undefined
 > => {
   try {
-    const result = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
+    const result = await databases.listDocuments(DATABASE_ID!, COLLECTION_ID!, [
       Query.orderDesc("count"),
       Query.limit(5),
     ]);
