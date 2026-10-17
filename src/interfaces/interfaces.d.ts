@@ -15,6 +15,13 @@ interface Movie {
   vote_count: number;
 }
 
+interface MovieVideo {
+  key: string;
+  site: string;
+  type: string;
+  official: boolean;
+}
+
 interface TrendingMovie {
   searchTerm: string;
   movie_id: number;

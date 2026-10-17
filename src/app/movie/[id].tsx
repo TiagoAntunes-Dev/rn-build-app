@@ -1,7 +1,9 @@
 import { icons } from "@/constants/icons";
-import { fetchMovieDetails } from "@/services/api";
+import { fetchMovieDetails, fetchMovieVideos } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { router, useLocalSearchParams } from "expo-router";
+import * as WebBrowser from "expo-web-browser";
+import { useCallback, useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 const formatMoney = (amount: number | null | undefined) => {
@@ -26,6 +28,51 @@ const formatMoney = (amount: number | null | undefined) => {
 
 export default function MovieDetails() {
   const { id } = useLocalSearchParams();
+  const movieId = Array.isArray(id) ? id[0] : id;
+  const [trailerKey, setTrailerKey] = useState<string | null>(null);
+  const [trailerLoading, setTrailerLoading] = useState(true);
+  const fetchDetails = useCallback(
+    () => fetchMovieDetails(movieId as string),
+    [movieId],
+  );
+
+  useEffect(() => {
+    let isActive = true;
+    setTrailerKey(null);
+
+    if (!movieId) {
+      setTrailerLoading(false);
+      return;
+    }
+
+    setTrailerLoading(true);
+    fetchMovieVideos(movieId)
+      .then((videos) => {
+        const youtubeTrailers = videos.filter(
+          (video) => video.site === "YouTube" && video.type === "Trailer",
+        );
+        const trailer =
+          youtubeTrailers.find((video) => video.official) ?? youtubeTrailers[0];
+
+        if (isActive) {
+          setTrailerKey(trailer?.key ?? null);
+        }
+      })
+      .catch(() => {
+        if (isActive) {
+          setTrailerKey(null);
+        }
+      })
+      .finally(() => {
+        if (isActive) {
+          setTrailerLoading(false);
+        }
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, [movieId]);
 
   interface MovieInfoProps {
     label: string;
@@ -38,10 +85,7 @@ export default function MovieDetails() {
     </View>
   );
 
-  const { data: movie, loading } = useFetch(
-    () => fetchMovieDetails(id as string),
-    true,
-  );
+  const { data: movie, loading } = useFetch(fetchDetails, true);
 
   return (
     <View className="bg-primary flex-1">
@@ -82,6 +126,27 @@ export default function MovieDetails() {
           </View>
 
           <MovieInfo label="Overview" value={movie?.overview} />
+
+          <TouchableOpacity
+            className={`mt-5 w-full rounded-lg py-3.5 flex-row items-center justify-center ${trailerKey ? "bg-accent" : "bg-dark-100"}`}
+            disabled={!trailerKey}
+            onPress={() => {
+              if (trailerKey) {
+                void WebBrowser.openBrowserAsync(
+                  `https://www.youtube.com/watch?v=${trailerKey}`,
+                );
+              }
+            }}
+          >
+            <Image source={icons.play} className="size-5 mr-2" />
+            <Text className="text-white font-bold text-base">
+              {trailerLoading
+                ? "Buscando trailer..."
+                : trailerKey
+                  ? "Assistir trailer"
+                  : "Trailer indisponível"}
+            </Text>
+          </TouchableOpacity>
 
           <MovieInfo
             label="Genres"
