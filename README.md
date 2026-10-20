@@ -1,29 +1,76 @@
-# 🎬 Movie Mobile — React Native & Expo Router
+<div align="center">
 
-![Expo](https://img.shields.io/badge/Expo-v51.0-000000?style=for-the-badge\&logo=expo\&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-0.74+-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge\&logo=typescript\&logoColor=white)
-![NativeWind](https://img.shields.io/badge/NativeWind-v4-38BDF8?style=for-the-badge\&logo=tailwindcss\&logoColor=white)
+# 🎬 Movie Mobile
 
-Aplicação mobile para exploração de filmes, desenvolvida com **React Native**, **Expo Router** e **NativeWind v4**.
+**Explore filmes de forma rápida e fluida, direto do seu celular.**
 
-O projeto utiliza uma arquitetura baseada em rotas e layouts, com foco em organização, reutilização de componentes e desenvolvimento multiplataforma.
+Aplicativo mobile construído com **React Native**, **Expo Router** e **NativeWind v4**.
+
+<br />
+
+![Expo](https://img.shields.io/badge/Expo-v51.0-000000?style=for-the-badge&logo=expo&logoColor=white)
+![React Native](https://img.shields.io/badge/React_Native-0.74+-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![NativeWind](https://img.shields.io/badge/NativeWind-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+<br />
+
+[📲 Baixar APK](#-baixar-o-aplicativo) •
+[🚀 Tecnologias](#-tecnologias-e-ferramentas) •
+[📁 Estrutura](#-estrutura-do-projeto) •
+[🛠️ Como executar](#️-como-executar-o-projeto) •
+[🌿 Git Flow](#-git-flow)
+
+</div>
+
+---
+
+## 📲 Baixar o aplicativo
+
+Quer testar sem instalar nada no computador? Baixe o APK e instale direto no seu Android.
+
+<div align="center">
+
+[![Baixar APK](https://img.shields.io/badge/⬇️_Baixar_APK-Google_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1N5vpkgs7ZtJ4rfbVwQnz83k_blDuzHi4/view?usp=drive_link)
+
+</div>
+
+> [!NOTE]
+> Para instalar, o Android pode pedir para **permitir a instalação de apps de fontes desconhecidas**. Isso acontece porque o APK não vem da Google Play Store.
+
+---
+
+## 📖 Sobre o projeto
+
+O **Movie Mobile** utiliza uma arquitetura baseada em **rotas e layouts**, com foco em organização, reutilização de componentes e desenvolvimento multiplataforma.
 
 ---
 
 ## 🚀 Tecnologias e Ferramentas
 
-* **[React Native](https://reactnative.dev/)** — Framework para desenvolvimento de aplicações mobile multiplataforma.
-* **[Expo Router](https://docs.expo.dev/router/introduction/)** — Sistema de navegação baseado em arquivos (*File-based Routing*).
-* **[NativeWind v4](https://www.nativewind.dev/)** — Biblioteca de estilização baseada em Tailwind CSS para React Native.
-* **[TypeScript](https://www.typescriptlang.org/)** — Linguagem que adiciona tipagem estática ao JavaScript.
-* **Metro Bundler** — Bundler utilizado pelo Expo/React Native para processar e empacotar a aplicação.
+| Tecnologia | Para que serve |
+| --- | --- |
+| **[React Native](https://reactnative.dev/)** | Desenvolvimento de aplicações mobile multiplataforma |
+| **[Expo Router](https://docs.expo.dev/router/introduction/)** | Navegação baseada em arquivos (*file-based routing*) |
+| **[NativeWind v4](https://www.nativewind.dev/)** | Estilização com Tailwind CSS no React Native |
+| **[TypeScript](https://www.typescriptlang.org/)** | Tipagem estática para o JavaScript |
+| **Metro Bundler** | Processa e empacota a aplicação no Expo/React Native |
+
+---
+
+## ✨ Funcionalidades Principais
+
+- [x] 🧭 **Navegação por abas** — principais telas organizadas com `expo-router`
+- [x] 🔗 **Rotas dinâmicas** — `[id].tsx` para acessar os detalhes de cada filme
+- [x] 🎨 **NativeWind v4** — estilização com classes utilitárias via `className`
+- [x] 🏗️ **Arquitetura baseada em layouts** — separação entre layout raiz e navegação por abas
+- [x] 🧩 **Componentes reutilizáveis** — interface organizada para facilitar a manutenção
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-O projeto utiliza o diretório `src/app` como raiz das rotas, seguindo a arquitetura baseada em arquivos do **Expo Router**.
+O diretório `src/app` é a raiz das rotas, seguindo a arquitetura baseada em arquivos do **Expo Router**.
 
 ```text
 src/
@@ -52,30 +99,16 @@ src/
 
 ---
 
-## 📍 Funcionalidades Principais
-
-* [x] **Navegação por abas** — Organização das principais telas utilizando `expo-router`.
-* [x] **Rotas dinâmicas** — Utilização de `[id].tsx` para acessar os detalhes de cada filme.
-* [x] **NativeWind v4** — Estilização utilizando classes utilitárias através da propriedade `className`.
-* [x] **Arquitetura baseada em layouts** — Separação entre o layout raiz e a navegação por abas.
-* [x] **Componentes reutilizáveis** — Organização dos elementos de interface para facilitar manutenção e reutilização.
-
----
-
 ## 🛠️ Como Executar o Projeto
 
-### Pré-requisitos
+### ✅ Pré-requisitos
 
-Antes de executar o projeto, certifique-se de ter instalado:
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- [Git](https://git-scm.com/)
+- [Expo Go](https://expo.dev/go/) (se for usar um dispositivo físico)
+- Android Studio com um emulador Android (se for usar emulador)
 
-* [Node.js](https://nodejs.org/) — versão LTS recomendada
-* [Git](https://git-scm.com/)
-* [Expo Go](https://expo.dev/go/) — caso utilize um dispositivo físico
-* Android Studio e um emulador Android, caso queira executar a aplicação em um emulador
-
----
-
-### 1. Clone o repositório
+### 1️⃣ Clone o repositório
 
 Clone a branch `develop`:
 
@@ -89,53 +122,39 @@ Entre no diretório do projeto:
 cd rn-build-app
 ```
 
----
-
-### 2. Instale as dependências
+### 2️⃣ Instale as dependências
 
 ```bash
 npm install
 ```
 
----
+### 3️⃣ Inicie o servidor Expo
 
-### 3. Inicie o servidor Expo
-
-Para iniciar o projeto limpando o cache:
+Para iniciar limpando o cache:
 
 ```bash
 npx expo start -c
 ```
 
----
+### 4️⃣ Execute no Android
 
-### 4. Execute no Android
-
-Para abrir diretamente no emulador Android:
+Para abrir diretamente no emulador:
 
 ```bash
 npx expo start --android
 ```
 
-Ou, após executar `npx expo start`, pressione:
+Ou, depois de executar `npx expo start`, pressione `a` no terminal.
 
-```text
-a
-```
+### ⚠️ Windows — PowerShell
 
-no terminal.
-
----
-
-## ⚠️ Windows — PowerShell
-
-Caso o PowerShell apresente erros relacionados à política de execução ao utilizar comandos como `npx`, execute o PowerShell como administrador e configure a política para o usuário atual:
+Se o PowerShell apresentar erros de política de execução ao usar comandos como `npx`, abra-o como administrador e execute:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
 
-Depois disso, feche e abra o terminal novamente e tente executar o comando:
+Feche e abra o terminal novamente e tente de novo:
 
 ```bash
 npx expo start
@@ -143,11 +162,19 @@ npx expo start
 
 ---
 
+## 📱 Plataformas Suportadas
+
+| Plataforma | Como executar |
+| --- | --- |
+| 🤖 **Android** | Emulador ou APK |
+| 🍎 **iOS** | Simulador ou Expo Go |
+| 📱 **Dispositivo físico** | Expo Go (leia o QR Code do terminal) |
+
+---
+
 ## 🌿 Git Flow
 
-Este repositório utiliza a branch `develop` para o desenvolvimento e consolidação de novas funcionalidades.
-
-A estrutura de branches utilizada é:
+A branch `develop` é usada para o desenvolvimento e a consolidação de novas funcionalidades.
 
 ```text
 develop
@@ -162,19 +189,19 @@ develop
           └── Versão de produção
 ```
 
-### Branch principal de desenvolvimento
+**Ir para a branch de desenvolvimento**
 
 ```bash
 git checkout develop
 ```
 
-### Criar uma nova branch
+**Criar uma nova branch**
 
 ```bash
 git checkout -b feature/nome-da-feature
 ```
 
-### Enviar a branch para o repositório remoto
+**Enviar a branch para o repositório remoto**
 
 ```bash
 git push -u origin feature/nome-da-feature
@@ -182,13 +209,8 @@ git push -u origin feature/nome-da-feature
 
 ---
 
-## 📱 Execução
+<div align="center">
 
-O projeto pode ser executado em:
+Feito com 💜 usando React Native e Expo
 
-* 🤖 **Android**
-* 🍎 **iOS**
-* 📱 **Dispositivo físico utilizando Expo Go**
-
----
-
+</div>
