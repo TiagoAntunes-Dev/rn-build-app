@@ -23,6 +23,7 @@ interface MovieVideo {
 }
 
 interface TrendingMovie {
+  documentId: string;
   searchTerm: string;
   movie_id: number;
   title: string;

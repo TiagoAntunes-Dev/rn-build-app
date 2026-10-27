@@ -9,12 +9,12 @@ import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
 import { useCallback, useState } from "react"; // 1. Adicione useState
 import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  Pressable,
-  Text,
-  View,
+    ActivityIndicator,
+    FlatList,
+    Image,
+    Pressable,
+    Text,
+    View,
 } from "react-native"; // 2. Adicione Pressable (ou Button)
 
 export default function App() {
@@ -83,7 +83,7 @@ export default function App() {
             marginBottom: 10,
           }}
           contentContainerStyle={{
-            paddingBottom: 20,
+            paddingBottom: 130,
           }}
           scrollEnabled={true}
           ListHeaderComponent={
@@ -111,9 +111,7 @@ export default function App() {
                     data={trendingData}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item, index) =>
-                      `${item.movie_id ?? item.searchTerm ?? index}`
-                    }
+                    keyExtractor={(item) => item.documentId}
                     renderItem={({ item, index }) => (
                       <View className="mr-3 relative overflow-visible">
                         <Text

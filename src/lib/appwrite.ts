@@ -92,15 +92,20 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
         },
       );
     } else {
-      await databases.createDocument(DATABASE_ID!, COLLECTION_ID!, ID.unique(), {
-        searchTerm,
-        movie_id: movie.id,
-        poster_url: movie.poster_path
-          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-          : null,
-        title: movie.title,
-        count: 1,
-      });
+      await databases.createDocument(
+        DATABASE_ID!,
+        COLLECTION_ID!,
+        ID.unique(),
+        {
+          searchTerm,
+          movie_id: movie.id,
+          poster_url: movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            : null,
+          title: movie.title,
+          count: 1,
+        },
+      );
     }
   } catch (error: any) {
     console.error("Erro ao atualizar contagem de busca:", error);
@@ -128,6 +133,7 @@ export const getTrendingMovies = async (): Promise<
             : await getMovieRatingFromTmdb(movieId);
 
         return {
+          documentId: document.$id,
           searchTerm: String(document.searchTerm ?? ""),
           movie_id: movieId,
           title: String(document.title ?? "Movie"),
