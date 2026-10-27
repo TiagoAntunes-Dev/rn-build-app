@@ -31,7 +31,7 @@ Quer testar sem instalar nada no computador? Baixe o APK e instale direto no seu
 
 <div align="center">
 
-[![Baixar APK](https://img.shields.io/badge/⬇️_Baixar_APK-Google_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1N5vpkgs7ZtJ4rfbVwQnz83k_blDuzHi4/view?usp=drive_link)
+[![Baixar APK](https://img.shields.io/badge/⬇️_Baixar_APK-Google_Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1FqTzjMdYRg6BrPQcS1lMg7C_zszVWLHQ/view?usp=share_link)
 
 </div>
 
@@ -48,13 +48,13 @@ O **Movie Mobile** utiliza uma arquitetura baseada em **rotas e layouts**, com f
 
 ## 🚀 Tecnologias e Ferramentas
 
-| Tecnologia | Para que serve |
-| --- | --- |
-| **[React Native](https://reactnative.dev/)** | Desenvolvimento de aplicações mobile multiplataforma |
-| **[Expo Router](https://docs.expo.dev/router/introduction/)** | Navegação baseada em arquivos (*file-based routing*) |
-| **[NativeWind v4](https://www.nativewind.dev/)** | Estilização com Tailwind CSS no React Native |
-| **[TypeScript](https://www.typescriptlang.org/)** | Tipagem estática para o JavaScript |
-| **Metro Bundler** | Processa e empacota a aplicação no Expo/React Native |
+| Tecnologia                                                    | Para que serve                                       |
+| ------------------------------------------------------------- | ---------------------------------------------------- |
+| **[React Native](https://reactnative.dev/)**                  | Desenvolvimento de aplicações mobile multiplataforma |
+| **[Expo Router](https://docs.expo.dev/router/introduction/)** | Navegação baseada em arquivos (_file-based routing_) |
+| **[NativeWind v4](https://www.nativewind.dev/)**              | Estilização com Tailwind CSS no React Native         |
+| **[TypeScript](https://www.typescriptlang.org/)**             | Tipagem estática para o JavaScript                   |
+| **Metro Bundler**                                             | Processa e empacota a aplicação no Expo/React Native |
 
 ---
 
@@ -164,10 +164,10 @@ npx expo start
 
 ## 📱 Plataformas Suportadas
 
-| Plataforma | Como executar |
-| --- | --- |
-| 🤖 **Android** | Emulador ou APK |
-| 🍎 **iOS** | Simulador ou Expo Go |
+| Plataforma                | Como executar                        |
+| ------------------------- | ------------------------------------ |
+| 🤖 **Android**            | Emulador ou APK                      |
+| 🍎 **iOS**                | Simulador ou Expo Go                 |
 | 📱 **Dispositivo físico** | Expo Go (leia o QR Code do terminal) |
 
 ---
